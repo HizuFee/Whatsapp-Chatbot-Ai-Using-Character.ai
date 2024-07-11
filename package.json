@@ -1,0 +1,19 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node_characterai": "^1.2.7",
+    "puppeteer": "^22.12.1",
+    "sharp": "^0.33.4",
+    "venom-bot": "^5.1.0",
+    "whatsapp-web.js": "^1.24.0"
+  }
+}
