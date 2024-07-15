@@ -30,7 +30,7 @@ async function getCharacterResponse(message) {
         }
     } catch (error) {
         console.error('Gagal mendapatkan respon dari Character AI:', error);
-        response = { text: 'kesensor wak, lu ngobrolin apaan kocak @legan' };
+        response = { text: 'kesensor wak, lu ngobrolin apaan kocak' };
     }
     return response.text;
 }
