@@ -63,7 +63,10 @@ This project uses the following packages:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
+## Credit
+
+If you use or modify this project, please give credit to the original author. Include the following credit line in your documentation or project:
+
 
 For any questions or feedback, please open an issue on [GitHub](https://github.com/HizuFee/Whatsapp-Chatbot-Ai-Using-Character.ai/issues).
 
@@ -134,6 +137,7 @@ Proyek ini menggunakan paket-paket berikut:
 
 Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
-## Kontak
+## Kredit
 
-Untuk pertanyaan atau umpan balik, silakan buka masalah di [GitHub](https://github.com/HizuFee/Whatsapp-Chatbot-Ai-Using-Character.ai/issues).
+Jika Anda menggunakan atau memodifikasi proyek ini, harap beri kredit kepada penulis asli. Sertakan baris kredit berikut dalam dokumentasi atau proyek Anda:
+
