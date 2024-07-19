@@ -3,60 +3,74 @@ const CharacterAI = require('node_characterai');
 
 const characterAIClient = new CharacterAI();
 
-const CHARACTER_ID = 'awbtz.....'; // Ganti dengan karakter ID Anda
-const ACCESS_TOKEN = 'cc2cd.....'; // Ganti dengan access token Anda
-
+const CHARACTER_ID = 'awbtz.....'; // Replace with your Character ID
+const ACCESS_TOKEN = 'cc2cd.....'; // Replace with your Access Token
 let chat;
 
 async function initializeCharacterAI() {
-    console.log('Mengotentikasi Character AI...');
+    console.log('Authenticating Character AI...');
     await characterAIClient.authenticateWithToken(ACCESS_TOKEN);
     chat = await characterAIClient.createOrContinueChat(CHARACTER_ID);
-    console.log('Character AI berhasil diinisialisasi:', chat);
+    console.log('Character AI successfully initialized:', chat);
 }
 
 async function getCharacterResponse(message) {
-    console.log('Memulai atau melanjutkan chat dengan Character AI...');
+    console.log('Starting or continuing chat with Character AI...');
     let response;
     try {
         response = await chat.sendAndAwaitResponse(message);
-        console.log('Objek respon dari Character AI:', response);  // Cetak seluruh objek respon
-        // Periksa apakah respons adalah array
+        console.log('Character AI response object:', response);
         if (Array.isArray(response) && response.length > 0) {
-            response = response[0];  // Ambil elemen pertama jika respons adalah array
+            response = response[0];  // Get the first element if the response is an array
         }
         if (!response || !response.text) {
-            throw new Error('Character AI tidak memberikan respons yang valid.');
+            throw new Error('Character AI did not provide a valid response.');
         }
     } catch (error) {
-        console.error('Gagal mendapatkan respon dari Character AI:', error);
-        response = { text: 'kesensor wak, lu ngobrolin apaan kocak' };
+        console.error('Failed to get response from Character AI:', error);
+        response = { text: 'Failed to get response from Character AI:' };
     }
     return response.text;
 }
 
+async function start(client) {
+    console.log('Client successfully created');
+    await initializeCharacterAI();
+
+    client.onMessage(async message => {
+        try {
+            if (message.body.startsWith('!')) {
+                const command = message.body.slice(2);
+
+                if (command === 'resetChat') {
+                    await resetChat();
+                    await client.sendText(message.from, 'Chat has been reset.');
+                } else {
+                    const response = await getCharacterResponse(command);
+                    await client.sendText(message.from, response);
+                }
+            }
+        } catch (error) {
+            console.error('Failed to send response:', error);
+        }
+    });
+}
+
+async function resetChat() {
+    try {
+        await chat.saveAndStartNewChat();
+        console.log('Chat successfully reset and new chat started.');
+    } catch (error) {
+        console.error('Failed to reset chat:', error);
+    }
+}
+
 venom.create('sessionName', undefined, undefined, {
     headless: true,
-    folderName: 'sessions'  // pastikan folder sessions ada di direktori kerja
+    folderName: 'sessions'   // Ensure 'sessions' folder exists in working directory
 })
     .then(client => start(client))
     .catch(error => {
         console.error(error);
     });
-
-async function start(client) {
-    console.log('Client berhasil dibuat');
-    await initializeCharacterAI();
-
-    client.onMessage(async message => {
-        try {
-            if (message.body.startsWith('! ')) {
-                const msgContent = message.body.slice(5);
-                const response = await getCharacterResponse(msgContent);
-                await client.sendText(message.from, response);
-            }
-        } catch (error) {
-            console.error('Gagal mengirim pesan balasan:', error);
-        }
-    });    
-}
+    
