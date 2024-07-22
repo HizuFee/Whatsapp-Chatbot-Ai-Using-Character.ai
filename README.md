@@ -59,10 +59,6 @@ This project uses the following packages:
 - Verify that the `sessions` folder exists in the working directory.
 - Check the console for any error messages and ensure all required packages are installed.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Credit
 
 If you use or modify this project, please give credit to the original author. Include the following credit line in your documentation or project:
@@ -132,10 +128,6 @@ Proyek ini menggunakan paket-paket berikut:
 - Pastikan Anda telah mengganti `CHARACTER_ID` dan `ACCESS_TOKEN` dengan nilai yang valid.
 - Verifikasi bahwa folder `sessions` ada di direktori kerja.
 - Periksa konsol untuk pesan kesalahan dan pastikan semua paket yang diperlukan telah diinstal.
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
 ## Kredit
 
