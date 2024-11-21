@@ -1,6 +1,6 @@
-# WhatsApp Chatbot with Character.ai
+# WhatsApp Chatbot with Character.ai (Deprecated)
 
-This project demonstrates how to build a WhatsApp chatbot using Character.ai for conversational AI.
+This project demonstrates how to build a WhatsApp chatbot using Character.ai for conversational AI.(Deprecated)
 
 ## Features
 
